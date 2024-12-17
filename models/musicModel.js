@@ -16,10 +16,10 @@ class MusicModel {
 
   static addMusic(musicData) {
     return new Promise((resolve, reject) => {
-      const { name, content, link_img, link_video, author } = musicData;
-      const query = 'INSERT INTO pop_music (name, content, link_img, link_video, author) VALUES (?, ?, ?, ?, ?)';
+      const { name, content, link_img, link_video, author, type } = musicData;
+      const query = 'INSERT INTO pop_music (name, content, link_img, link_video, author, type) VALUES (?, ?, ?, ?, ?, ?)';
       
-      db.query(query, [name, content, link_img, link_video, author], (error, result) => {
+      db.query(query, [name, content, link_img, link_video, author, type], (error, result) => {
         if (error) {
           reject(error);
         } else {

@@ -11,6 +11,11 @@ const dbConfig = {
   ssl: {
     rejectUnauthorized: false
   }
+
+  // host: 'localhost',
+  // user: 'root',
+  // password: '',
+  // database: 'news'  
 };
 
 const connection = mysql.createPool(dbConfig);
