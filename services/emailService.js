@@ -1,8 +1,18 @@
 const transporter = require('../config/mailer');
+const axios = require('axios');
 
 class EmailService {
   static async sendEmail(emailData) {
-    const { name, email, subject, message } = emailData;
+    const { name, email, subject, message, captcha } = emailData;
+
+    // Verify reCAPTCHA
+    const recaptchaResponse = await axios.post(
+      `https://www.google.com/recaptcha/api/siteverify?secret=6LefuK4qAAAAACRcqvDNeBWpbolAJPO3PatKFiz_&response=${captcha}`
+    );
+
+    if (!recaptchaResponse.data.success) {
+      throw new Error('reCAPTCHA verification failed');
+    }
 
     const mailOptions = {
       from: email,

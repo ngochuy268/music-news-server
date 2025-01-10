@@ -29,3 +29,5 @@ connection.getConnection(error => {
 });
 
 module.exports = connection;
+// NODE_OPTIONS=--openssl-legacy-provider 
+// NODE_OPTIONS=--openssl-legacy-provider 
